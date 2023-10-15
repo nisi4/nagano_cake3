@@ -6,26 +6,41 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="../../stylesheets/bootstrap/bootstrap.min.css">
+    <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="container">
-      <div class="row h-30">
-        <div class="col-3">
+      <div class="row mt-4 h-80 d-flex justify-content-between">
+        <div class="col-2">
           <h1>LOGO</h1>
         </div>
-        <div class="col-2">
+        <div class="col-3">
           
         </div>
-        <div class="col-5">
-          <div class="row d-flex justify-content-around">
-            <div class="col">
-              
+        <div class="col-7">
+          <div class="row d-flex flex-column">
+            <div class="col d-flex justify-content-between mb-2">
+              <div class="menu">
+                <%= link_to "マイページ",root_path,class: "btn btn-outline-secondary" %>
+              </div>
+              <div class="menu">
+                <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
+              </div>
+              <div class="menu">
+                <%= link_to "カート",root_path,class: "btn btn-outline-secondary" %>
+              </div>
+              <div class="menu">
+                <%= link_to "ログアウト",root_path,class: "btn btn-outline-secondary" %>
+              </div>
             </div>
             <div class="col">
-              
+              <div class="search">
+                <h1>search</h1>
+              </div>
             </div>
           </div>
         </div>
