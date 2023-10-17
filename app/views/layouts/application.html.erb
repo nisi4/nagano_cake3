@@ -13,31 +13,46 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row mt-4 h-80 d-flex justify-content-between">
-        <div class="col-2">
-          <h1>LOGO</h1>
+    <div class="container-fluid">
+      <div class="row mt-4 h-80 d-flex justify-content-between px-4 pb-3 border-bottom">
+        <div class="col-3 d-flex align-items-center justify-content-center">
+          <h1 class="border py-2 px-5">LOGO</h1>
         </div>
-        <div class="col-3">
+        <div class="col-3 d-flex align-items-center justify-content-end">
           
         </div>
-        <div class="col-7">
+        <div class="col-6">
           <div class="row d-flex flex-column">
             <div class="col d-flex justify-content-between mb-2">
-              <div class="menu">
-                <%= link_to "マイページ",root_path,class: "btn btn-outline-secondary" %>
-              </div>
-              <div class="menu">
-                <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
-              </div>
-              <div class="menu">
-                <%= link_to "カート",root_path,class: "btn btn-outline-secondary" %>
-              </div>
-              <div class="menu">
-                <%= link_to "ログアウト",root_path,class: "btn btn-outline-secondary" %>
-              </div>
+              <% if customer_signed_in? %>
+                <div class="menu">
+                  <%= link_to "マイページ",root_path,class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="menu">
+                  <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="menu">
+                  <%= link_to "カート",root_path,class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="menu">
+                  <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-secondary" %>
+                </div>
+              <% else %>
+                <div class="menu">
+                  <%= link_to "About",root_path,class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="menu">
+                  <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="menu">
+                  <%= link_to "新規登録",new_customer_registration_path,class: "btn btn-outline-secondary" %>
+                </div>
+                <div class="menu">
+                  <%= link_to "ログイン",new_customer_session_path,class: "btn btn-outline-secondary" %>
+                </div>
+              <% end %>
             </div>
-            <div class="col">
+            <div class="col d-flex justify-content-end">
               <div class="search">
                 <h1>search</h1>
               </div>
