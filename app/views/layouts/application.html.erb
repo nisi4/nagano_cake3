@@ -6,52 +6,63 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="../../stylesheets/bootstrap/bootstrap.min.css">
-    <script type="text/javascript" src="../../bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../assets/stylesheets/bootstrap/bootstrap.min.css">
+    <script type="text/javascript" src="../../javascript/bootstrap/bootstrap.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="container-fluid">
-      <div class="row mt-4 h-80 d-flex justify-content-between px-4 pb-3 border-bottom">
-        <div class="col-3 d-flex align-items-center justify-content-center">
-          <h1 class="border py-2 px-5">LOGO</h1>
+      <div class="row mt-4 h-80 d-flex justify-content-between ps-3 pe-5 pb-3 border-bottom">
+        <div class="col-3 col-lg-3 d-flex align-items-center justify-content-center">
+          <%= link_to root_path,class: "text-dark text-decoration-none" do %>
+            <h1 class="border py-2 px-5">LOGO</h1>
+          <% end %>
         </div>
-        <div class="col-3 d-flex align-items-center justify-content-end">
+        <div class="col-3 col-lg-4 d-flex align-items-center justify-content-end">
           
         </div>
-        <div class="col-6">
+        <div class="col-6 col-lg-5">
           <div class="row d-flex flex-column">
-            <div class="col d-flex justify-content-between mb-2">
-              <% if customer_signed_in? %>
-                <div class="menu">
-                  <%= link_to "マイページ",root_path,class: "btn btn-outline-secondary" %>
+            <nav class="navbar navbar-expand-md navbar-light">
+              <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                  <% if customer_signed_in? %>
+                    <li class="nav-item">
+                      <%= link_to "マイページ",root_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="nav-item flex-fill">
+                      <%= link_to "カート",root_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="nav-item flex-fill">
+                      <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-secondary" %>
+                    </li>
+                  <% else %>
+                    <li class="nav-item">
+                      <%= link_to "About",root_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "新規登録",new_customer_registration_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "ログイン",new_customer_session_path,class: "btn btn-outline-secondary" %>
+                    </li>
+                  <% end %>
+                  </ul>
                 </div>
-                <div class="menu">
-                  <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
-                </div>
-                <div class="menu">
-                  <%= link_to "カート",root_path,class: "btn btn-outline-secondary" %>
-                </div>
-                <div class="menu">
-                  <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-secondary" %>
-                </div>
-              <% else %>
-                <div class="menu">
-                  <%= link_to "About",root_path,class: "btn btn-outline-secondary" %>
-                </div>
-                <div class="menu">
-                  <%= link_to "商品一覧",root_path,class: "btn btn-outline-secondary" %>
-                </div>
-                <div class="menu">
-                  <%= link_to "新規登録",new_customer_registration_path,class: "btn btn-outline-secondary" %>
-                </div>
-                <div class="menu">
-                  <%= link_to "ログイン",new_customer_session_path,class: "btn btn-outline-secondary" %>
-                </div>
-              <% end %>
-            </div>
+              </div>
+            </nav>
             <div class="col d-flex justify-content-end">
               <div class="search">
                 <h1>search</h1>
