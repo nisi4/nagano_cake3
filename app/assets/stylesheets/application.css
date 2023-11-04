@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+.nav-item {
+  margin-left: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width:768px) {
+  .nav-item {
+    margin-left: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+  
+  .nav-item a {
+    transition: .3s;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    border: none;
+    padding: 5px;
+  }
+  
+  .nav-item a:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    border: none;
+    padding: 5px;
+  }
+}
