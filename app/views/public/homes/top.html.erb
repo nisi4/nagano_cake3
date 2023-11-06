@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row mx-4">
-    <div class="col-3">
-      <div class="genre mt-4">
+    <div class="col-3 col-lg-2 me-lg-5">
+      <div class="genre mt-4 ms-5">
         <table class="table">
             <tr>
               <td class="text-center">ジャンル検索</td>
@@ -21,7 +21,7 @@
         </table>
       </div>
     </div>
-    <div class="col-7 ms-5">
+    <div class="col-7 col-lg-6 ms-5">
       <div class="row">
         <div class="greeting mt-4 d-flex justify-content-center align-items-center">
           <p>
@@ -32,13 +32,20 @@
           </p>
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-4">
         <div class="item-title">
-          
+          <h1>新着商品</h1>
         </div>
         <div class="item-image">
-          
+          <% @items.each do |item| %>
+          <div class="">
+            <%= image_tag item.image %><br>
+            <%= item.name %><br>
+            ¥<%= item.price %>
+          </div>
+          <% end %>
         </div>
+        <%= paginate @items %>
       </div>
     </div>
   </div>
