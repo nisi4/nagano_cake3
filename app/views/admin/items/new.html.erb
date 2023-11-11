@@ -1,2 +1,70 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row my-4">
+        <h2>
+          <span class="title">商品新規登録</span>
+        </h2>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <%= form_with model: @item,url: admin_items_path,method: :post do |f| %>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>商品画像</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.file_field :item_image,class: "w90" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>商品名</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :name,class: "w90" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>商品説明</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_area :introduction,class: "w90" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>ジャンル</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :genre_id,class: "w90" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>税抜価格</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :price,placeholder: "1000",class: "w90" %> 円
+            </div>
+          </div>
+          <div class="row justify-content-center mb-4">
+            <div class="col-md-4">
+              <p>販売ステータス</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :is_active,class: "w90" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-4">
+            <div class="col-3">
+              <%= f.submit "新規登録",class: "btn btn-success text-white" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
