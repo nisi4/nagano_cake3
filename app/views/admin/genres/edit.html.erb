@@ -1,2 +1,24 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row my-4">
+        <h2>
+          <span class="title">ジャンル編集</span>
+        </h2>
+      </div>
+      <%= form_with model: @genre,url: admin_update_genre_path,method: :patch do |f| %>
+      <div class="row my-3">
+        <div class="col-2 d-flex align-items-center">
+          <span>ジャンル名</span>
+        </div>
+        <div class="col-3 d-flex align-items-center">
+          <%= f.text_field :name,class: "w90" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "変更を保存",class: "btn btn-success btn-lg text-white" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

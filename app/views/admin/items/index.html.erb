@@ -15,7 +15,7 @@
       </div>
       <div class="row">
         <table class="table table-bordered">
-          <thead>
+          <thead class="thead-color">
             <tr>
               <th>商品ID</th>
               <th>商品名</th>
@@ -31,7 +31,13 @@
               <td><%= item.name %></td>
               <td><%= item.price %></td>
               <td><%= item.genre.name %></td>
-              <td><%= item.is_active %></td>
+              <td>
+                <% if item.is_active == true %>
+                  <span class="text-success">販売中</span>
+                <% else %>
+                  <span class="text-secondary">販売停止中</span>
+                <% end %>
+              </td>
             </tr>
           </tbody>
           <% end %>
