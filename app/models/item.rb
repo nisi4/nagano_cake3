@@ -4,4 +4,8 @@ class Item < ApplicationRecord
   belongs_to :genre
   
   has_one_attached :item_image
+  
+  def tax_included_price
+    (self.price*1.10).round
+  end
 end

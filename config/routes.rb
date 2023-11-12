@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     get 'items/new'
     post "items" => "items#create"
     get 'items/index'
-    get 'items/show'
-    get 'items/edit'
+    get 'items/:id/show' => "items#show",as: "item_show"
+    get 'items/:id/edit' => "items#edit",as: "item_edit"
   end
   namespace :admin do
     get 'homes/top'
