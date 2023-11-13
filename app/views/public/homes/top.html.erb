@@ -39,7 +39,7 @@
         <div class="item-image">
           <% @items.each do |item| %>
           <div class="">
-            <%= image_tag item.image %><br>
+            <%= image_tag item.item_image,class: "img-fluid" %><br>
             <%= item.name %><br>
             ¥<%= item.price %>
           </div>

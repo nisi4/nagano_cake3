@@ -1,2 +1,70 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row my-4">
+        <h2>
+          <span class="title">商品編集</span>
+        </h2>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+          <%= form_with model: @item,url: admin_item_update_path(@item.id),method: :patch do |f| %>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>商品画像</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.file_field :item_image,class: "w90" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>商品名</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :name,class: "w90",placeholder: "商品名" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>商品説明</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_area :introduction,class: "w90",placeholder: "ここに説明文を記述します" %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>ジャンル</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.collection_select(:genre_id,@genres,:id,:name,{prompt: "--選択してください--"},{class: "w90"}) %>
+            </div>
+          </div>
+          <div class="row justify-content-center mb-2">
+            <div class="col-md-4">
+              <p>税抜価格</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.text_field :price,placeholder: "1000",class: "w90" %> 円
+            </div>
+          </div>
+          <div class="row justify-content-center mb-4">
+            <div class="col-md-4">
+              <p>販売ステータス</p>
+            </div>
+            <div class="col-md-6">
+              <%= f.radio_button :is_active, "true" %> 販売中 <%= f.radio_button :is_active, "false" %> 販売停止中 
+            </div>
+          </div>
+          <div class="row justify-content-center mb-4">
+            <div class="col-3">
+              <%= f.submit "編集する",class: "btn btn-success btn-lg text-white" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
