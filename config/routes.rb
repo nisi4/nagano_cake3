@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    get 'customers/:id/show' => "customers#show",as: "customer_show"
+    get 'customers/:id/edit' => "customers#edit",as: "customer_edit"
   end
   namespace :admin do
     get 'genres/index'

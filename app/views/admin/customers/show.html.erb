@@ -1,2 +1,87 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row my-4">
+        <h2>
+          <span class="title"><%= @customer.full_name %>の会員詳細</span>
+        </h2>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>会員ID</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.id %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>氏名</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.last_name %>　<%= @customer.first_name %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>フリガナ</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.last_name_kana %>　<%= @customer.first_name_kana %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>郵便番号</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.postal_code %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>住所</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.address %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>電話番号</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.telephone_number %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>メールアドレス</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.email %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>会員ステータス</span>
+        </div>
+        <div class="col-7">
+          <% if @customer.is_deleted == false %>
+            <span class="text-success">有効</span>
+          <% else %>
+            <span class="text-secondary">退会</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="row my-4 offset-2">
+        <div class="col-3">
+          <%= link_to "編集する",admin_customer_edit_path(@customer.id),class: "btn btn-success" %>
+        </div>
+        <div class="col-4">
+          <%= link_to "注文履歴一覧を見る",admin_homes_top_path,class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
