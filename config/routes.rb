@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "public/homes#top"
   namespace :admin do
-    get 'orders/show'
+    get 'orders/:id/show' => "orders#show",as: "order_show"
   end
   namespace :admin do
     get 'customers/index'
