@@ -1,2 +1,88 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="row my-4">
+        <h2>
+          <span class="title"><%= @customer.full_name %>の会員情報編集</span>
+        </h2>
+      </div>
+      <%= form_with model: @customer,url: admin_customer_update_path(@customer.id),method: :patch do |f| %>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>会員ID</span>
+        </div>
+        <div class="col-7">
+          <%= @customer.id %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>氏名</span>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :last_name,class: "w90" %>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :first_name,class: "w90" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>フリガナ</span>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :last_name_kana,class: "w90" %>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :first_name_kana,class: "w90" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>郵便番号</span>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :postal_code,class: "w90" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>住所</span>
+        </div>
+        <div class="col-7">
+          <%= f.text_field :address,class: "w90" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>電話番号</span>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :telephone_number,class: "w90" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>メールアドレス</span>
+        </div>
+        <div class="col-3">
+          <%= f.email_field :email,class: "w90" %>
+        </div>
+      </div>
+      <div class="row my-3">
+        <div class="col-2">
+          <span>会員ステータス</span>
+        </div>
+        <div class="col-3">
+          <%= f.radio_button :is_deleted, "false" %>有効 <%=f.radio_button :is_deleted, "true" %>退会
+        </div>
+      </div>
+      <div class="row my-4 offset-2">
+        <div class="col-3">
+          <%= f.submit "変更を保存",class: "px-3 py-2 btn btn-success btn-lg text-white" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

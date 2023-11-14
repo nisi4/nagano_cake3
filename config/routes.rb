@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'customers/index'
     get 'customers/:id/show' => "customers#show",as: "customer_show"
     get 'customers/:id/edit' => "customers#edit",as: "customer_edit"
+    patch "customers/:id" => "customers#update",as: "customer_update"
   end
   namespace :admin do
     get 'genres/index'
