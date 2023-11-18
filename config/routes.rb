@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'items/:id/show' => "items#show",as: "item_show"
     get 'items/:id/edit' => "items#edit",as: "item_edit"
     patch "items/:id" => "items#update",as: "item_update"
+    delete "items/:id" => "items#destroy",as: "item_destroy"
   end
   namespace :admin do
     get 'homes/top'

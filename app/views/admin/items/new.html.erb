@@ -3,14 +3,14 @@
     <div class="col">
       <div class="row my-4">
         <h2>
-          <span class="title">商品新規登録</span>
+          <span class="title offset-lg-2">商品新規登録</span>
         </h2>
       </div>
       <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 col-lg-8">
           <%= form_with model: @item,url: admin_items_path,method: :post do |f| %>
           <div class="row justify-content-center mb-2">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-2">
               <p>商品画像</p>
             </div>
             <div class="col-md-6">
@@ -18,7 +18,7 @@
             </div>
           </div>
           <div class="row justify-content-center mb-2">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-2">
               <p>商品名</p>
             </div>
             <div class="col-md-6">
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="row justify-content-center mb-2">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-2">
               <p>商品説明</p>
             </div>
             <div class="col-md-6">
@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="row justify-content-center mb-2">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-2">
               <p>ジャンル</p>
             </div>
             <div class="col-md-6">
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="row justify-content-center mb-2">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-2">
               <p>税抜価格</p>
             </div>
             <div class="col-md-6">
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="row justify-content-center mb-4">
-            <div class="col-md-4">
+            <div class="col-md-4 col-lg-2">
               <p>販売ステータス</p>
             </div>
             <div class="col-md-6">
