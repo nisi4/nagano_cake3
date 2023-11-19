@@ -6,6 +6,6 @@ class Item < ApplicationRecord
   has_one_attached :item_image
   
   def tax_included_price
-    (self.price*1.10).round
+    (self.price*1.10).round.to_s(:delimited)
   end
 end

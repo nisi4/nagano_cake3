@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'cart_items/index'
+    post "cart_items" => "cart_items#create"
   end
   namespace :public do
     get 'customers/show'
