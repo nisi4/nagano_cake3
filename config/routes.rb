@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'items/index'
-    get 'items/show'
+    get 'items/:id/show' => "items#show",as: "item_show"
   end
   namespace :public do
     get 'homes/about'
