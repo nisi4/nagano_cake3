@@ -20,7 +20,9 @@
           <% end %>
         </div>
         <div class="col-3 col-lg-4 d-flex align-items-center justify-content-end">
-          
+          <% if customer_signed_in? %>
+            <h5>ようこそ、<%= @customer_name %>さん！</h5>
+          <% end %>
         </div>
         <div class="col-6 col-lg-6"> 
           <div class="row d-flex flex-column"> 

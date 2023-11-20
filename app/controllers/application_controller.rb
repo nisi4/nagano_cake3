@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  before_action :customer_name
+  def customer_name
+    @customer_name = current_customer.last_name
+  end
 
   protected
 
