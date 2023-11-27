@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   namespace :public do
     get 'cart_items/index'
     post "cart_items" => "cart_items#create"
+    patch "cart_items/:id" => "cart_items#update",as: "cart_item_update"
+    delete "cart_items/:id" => "cart_items#destroy",as: "cart_item_destory"
     delete "cart_items/destroy_all" => "cart_items#destroy_all"
   end
   namespace :public do
