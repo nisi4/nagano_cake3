@@ -8,12 +8,80 @@
           </h2>
         </div>
       </div>
-      <%= form_with model: @order,url: ,method: :post do |f| %>
+      <%= form_with model: @order,url: public_orders_confirm_path,method: :post do |f| %>
       <div class="row">
         <h3>支払方法</h3>
       </div>
       <div class="row">
-        
+        <div class="col-5 ms-4">
+          <%= f.radio_button :payment_method, 0 %> クレジットカード<br> <%= f.radio_button :payment_method, 1 %> 銀行振込
+        </div>
+      </div>
+      <div class="row mt-4">
+        <h3>お届け先</h3>
+      </div>
+      <div class="row">
+        <div class="col-12 ms-4">
+          <div class="row d-flex flex-column">
+            <div class="col">
+              <%= f.radio_button :select_address, 0 %> ご自身の住所
+            </div>
+            <div class="col">
+              <div class="row ms-4">
+                〒<%= @customer.postal_code %> <%= @customer.address %><br>
+                <%= @customer.full_name %>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex flex-column mt-3">
+            <div class="col">
+              <%= f.radio_button :select_address, 1 %> 登録済住所から選択
+            </div>
+            <div class="col">
+              <div class="row ms-4">
+                <div class="col">
+                  <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display),{},class: "w90" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex flex-column mt-3">
+            <div class="col">
+              <%= f.radio_button :select_address, 2 %> 新しいお届け先
+            </div>
+            <div class="col">
+              <div class="row ms-4">
+                <div class="col col-md-5 col-lg-3 d-flex align-items-center">
+                  <span>郵便番号(ハイフンなし)</span>
+                </div>
+                <div class="col col-md-5 col-lg-4">
+                  <%= f.text_field :postal_code,class: "w90",placeholder: "0001234" %>
+                </div>
+              </div>
+              <div class="row ms-4 mt-2">
+                <div class="col col-md-5 col-lg-3 d-flex align-items-center">
+                  <span>住所</span>
+                </div>
+                <div class="col col-md-7 col-lg-8">
+                  <%= f.text_field :address,class: "w90",placeholder: "東京都渋谷区代々木神園町0-0" %>
+                </div>
+              </div>
+              <div class="row ms-4 mt-2">
+                <div class="col col-md-5 col-lg-3 d-flex align-items-center">
+                  <span>宛名</span>
+                </div>
+                <div class="col col-md-5 col-lg-4">
+                  <%= f.text_field :name,class: "w90",placeholder: "令和道子" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row my-4 d-flex justify-content-center">
+        <div class="col-4">
+          <%= f.submit "確認画面へ進む",class: "btn btn-primary text-white" %>
+        </div>
       </div>
       <% end %>
     </div>

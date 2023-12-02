@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'orders/new'
+    post "orders/confirm" => "orders#confirm"
     get 'orders/complete'
     get 'orders/index'
     get 'orders/show'
