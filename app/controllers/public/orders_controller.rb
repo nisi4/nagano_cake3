@@ -6,7 +6,22 @@ class Public::OrdersController < ApplicationController
   end
   
   def confirm
-    @order = Order.new(order_params)
+    if params[:order][:select_address] == "0"
+      @order = Order.new(order_params)
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.full_name
+    elsif params[:order][:select_address] == "1"
+      @order = Order.new(order_params)
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    else 
+      @order = Order.new(order_params)
+    end
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @total = 0
     @order.customer_id = current_customer.id
     @order.save
     redirect_to public_orders_complete_path

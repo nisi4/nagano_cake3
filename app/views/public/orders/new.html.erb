@@ -14,7 +14,7 @@
       </div>
       <div class="row">
         <div class="col-5 ms-4">
-          <%= f.radio_button :payment_method, 0 %> クレジットカード<br> <%= f.radio_button :payment_method, 1 %> 銀行振込
+          <%= f.radio_button :payment_method, "credit_card" %> クレジットカード<br> <%= f.radio_button :payment_method, "transfer" %> 銀行振込
         </div>
       </div>
       <div class="row mt-4">
