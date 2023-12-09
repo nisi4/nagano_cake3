@@ -4,4 +4,8 @@ class Order < ApplicationRecord
   
   belongs_to :customer
   has_many :order_items, dependent: :destroy
+  
+  def postage
+    self.postage = 500
+  end
 end

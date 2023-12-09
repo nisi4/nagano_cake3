@@ -23,6 +23,12 @@ class Public::OrdersController < ApplicationController
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = 0
     @order.customer_id = current_customer.id
+  end
+  
+  def create
+    @order = Order.new(order_params)
+    @order.postage
+    @order.customer_id = current_customer.id
     @order.save
     redirect_to public_orders_complete_path
   end
@@ -39,6 +45,6 @@ class Public::OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:postal_code,:address,:name,:payment_method)
+    params.require(:order).permit(:postal_code,:address,:name,:payment_method,:payment)
   end
 end
