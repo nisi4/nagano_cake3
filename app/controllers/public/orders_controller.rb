@@ -30,6 +30,16 @@ class Public::OrdersController < ApplicationController
     @order.postage
     @order.customer_id = current_customer.id
     @order.save
+    order_item = OrderItem.new(order_item_params)
+    
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @cart_items.each do |cart_item|
+      order_item.order_id = @order.id
+      order_item.item_id = cart_item.item_id
+      order_item.price = cart_item.item.tax_included_price
+      order_item.amount = cart_item.amount
+    end
+    current_customer.cart_items.destroy_all
     redirect_to public_orders_complete_path
   end
 
@@ -46,5 +56,9 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:postal_code,:address,:name,:payment_method,:payment)
+  end
+  
+  def order_item_params
+    params.require(:order_item).permit(:item_id,:price,:amount)
   end
 end
