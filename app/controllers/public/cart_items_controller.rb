@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    if @cart_item_add = CartItem.find_by(item_id: @cart_item.item_id)
+    if @cart_item_add = CartItem.find_by(customer_id: @cart_item.customer_id, item_id: @cart_item.item_id)
       @cart_item_add.amount += @cart_item.amount 
       @cart_item_add.save
     else
